@@ -1044,10 +1044,14 @@ class ParseZhongheng:
         author_about = soup.find("p", class_="author-detail-msg").text
         # 作者累计字数
         author_write_count = soup.find("p", class_="author-ach").find_all("span")[-1].text
-        # TODO 作者的作品列表
+        # 作者的作品列表
+        author_productions = soup.find_all("div", class_="list-cell clearfix")
 
         # print(author_about)
-        print(author_write_count)
+        # print(author_write_count)
+        for item in author_productions:
+            book_url = item.find("div").find("a")["href"]
+            print(book_url)
 
 
 ad = ParseZhongheng()
